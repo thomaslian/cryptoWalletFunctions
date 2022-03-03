@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "ecpair": "^2.0.1",
+    "tiny-secp256k1": "^2.2.1"
+  }
+}
