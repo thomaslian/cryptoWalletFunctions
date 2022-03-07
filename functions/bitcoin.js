@@ -10,14 +10,13 @@ const bitcoin = require('bitcoinjs-lib');
 /**
  * Generate a new Bitcoin public key and private key
  */
-
 exports.generateKeys = functions.region('europe-west3').https.onCall((data, context) => {
 
     const ECPair = ECPairFactory(ecc);
     const keyPair = ECPair.makeRandom();
 
-    const pubKey = bitcoin.payments.p2pkh({ pubkey: keyPair.publicKey }).address;
-    const privKey = keyPair.toWIF();
+    const publicKey = bitcoin.payments.p2pkh({ pubkey: keyPair.publicKey }).address;
+    const privateKey = keyPair.toWIF();
 
-    return { pubKey, privKey };
+    return { publicKey, privateKey };
 });
