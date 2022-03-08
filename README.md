@@ -27,3 +27,5 @@ firebase deploy --only functions:addMessage
 - eg2.vscode-npm-script
 - GitHub.copilot
 - xabikos.JavaScriptSnippets
+- esbenp.prettier-vscode
+- oderwat.indent-rainbow
