@@ -28,4 +28,5 @@ firebase deploy --only functions:addMessage
 - GitHub.copilot
 - xabikos.JavaScriptSnippets
 - esbenp.prettier-vscode
-- oderwat.indent-rainbow
+- CoenraadS.bracket-pair-colorizer-2
+- Goopware.raythis
