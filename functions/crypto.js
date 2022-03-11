@@ -1,5 +1,6 @@
 var crypto = require("crypto-js");
 
+// This file was inspired by: https://embed.plnkr.co/0VPU1zmmWC5wmTKPKnhg/
 function encrypt(text, password) {
     const salt = crypto.lib.WordArray.random(128 / 8);
     const key = crypto.PBKDF2(password, salt);

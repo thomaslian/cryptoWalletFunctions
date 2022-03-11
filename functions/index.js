@@ -6,4 +6,5 @@ admin.initializeApp();
 
 const bitcoin = require('./bitcoin');
 exports.generateBitcoinKeys = bitcoin.generateKeys;
-exports.generateBitcoinKeysEncrypted = bitcoin.generateKeysEncrypted;
+exports.generateBitcoinEncryptedKeys = bitcoin.generateEncryptedKeys;
+exports.generateAndStoreBitcoinEncryptedKeys = bitcoin.generateAndStoreEncryptedKeys;
