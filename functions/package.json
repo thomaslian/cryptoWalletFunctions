@@ -13,6 +13,7 @@
   },
   "main": "index.js",
   "dependencies": {
+    "bip39": "^3.0.4",
     "bitcoinjs-lib": "^6.0.1",
     "crypto-js": "^4.1.1",
     "ecpair": "^2.0.1",

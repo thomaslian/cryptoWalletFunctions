@@ -6,16 +6,34 @@ const admin = require('firebase-admin');
 const { ECPairFactory } = require('ecpair');
 const ecc = require('tiny-secp256k1');
 const bitcoin = require('bitcoinjs-lib');
+const bip39 = require('bip39');
+const cry = require("crypto");
 const { encrypt, decrypt } = require('./crypto');
 
+/**
+ * Generates a random mnemonic and returns it.
+ * @returns {string} - A random mnemonic.
+ */
+exports.generateMnemonic = functions.region('europe-west3').https.onCall((data, context) => {
+    const randomBytes = cry.randomBytes(16);
+
+    // Return word phrase
+    return bip39.entropyToMnemonic(randomBytes.toString('hex'));
+});
 
 /**
  * Generate a new Bitcoin public key and private key. The private key is unencrypted.
+ * @returns {object} - An object containing the public and private key.
  */
 exports.generateKeys = functions.region('europe-west3').https.onCall((data, context) => {
     return generateKeys();
 });
 
+/**
+ * Generates a public and a private key. The private key is encrypted with the input password.
+ * @param {string} userPassword - The password to encrypt the private key with.
+ * @returns {object} - An object containing the public and encrypted private key.
+ */
 exports.generateEncryptedKeys = functions.region('europe-west3').https.onCall((data, context) => {
     return generateEncryptedKeys(data.userPassword);
 });
@@ -23,6 +41,7 @@ exports.generateEncryptedKeys = functions.region('europe-west3').https.onCall((d
 /**
  * Generate a new Bitcoin public key and private key. The private key is encrypted.
  * Data gets stored in the database. Including UID, Public Key and Private Key.
+ * @param {string} userPassword - The password to encrypt the private key with.
  */
 exports.generateAndStoreEncryptedKeys = functions.region('europe-west3').https.onCall((data, context) => {
     const uid = context.auth.uid;
