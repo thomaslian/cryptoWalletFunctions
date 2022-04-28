@@ -1,15 +1,15 @@
-# Bitcoin Cash Functions
+# Crypto Wallet Functions
 Firebase functions for creating a crypto wallet
 
 ## How to run
-- Emulator - for testing purposes
-```
-firebase emulators:start
-```
-
 - Install dependencies from package.json
 ```
 npm install
+```
+
+- Emulator - for testing purposes
+```
+firebase emulators:start
 ```
 
 - Deploy functions only to firebase
